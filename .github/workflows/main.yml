@@ -8,26 +8,32 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Set up QEMU
+      - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
-      -
-        name: Set up Docker Buildx
+
+      - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
-      -
-        name: Login to ECR
+
+      - name: Login to ECR
         uses: docker/login-action@v1
         with:
           registry: ${{ secrets.AWC_ECR_URI }}
           username: ${{ secrets.AWS_ACCESS_KEY_ID }}
           password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      -
-        name: Build and push
+
+      - uses: prewk/s3-cp-action@master
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          SOURCE: "s3://skore-development/apex/apex-Linux"
+          DEST: "./bin/apex"
+
+      - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
         with:
           push: true
           tags: ${{ secrets.AWC_ECR_URI }}/node-apex:latest
-      -
-        name: Image digest
+
+      - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
