@@ -7,7 +7,7 @@ docker-login:
 		| docker login --username AWS --password-stdin $(CONTAINER_REGISTRY)
 
 download-apex:
-	aws s3 cp s3://skore-development/apex/apex-Linux bin/apex
+	aws s3 cp s3://skore-development/apex/apex-Linux /usr/local/bin/apex
 
 build-image:
 	docker build -t $(LOCAL_TAG) .
