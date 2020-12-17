@@ -26,7 +26,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           SOURCE: "s3://skore-development/apex/apex-Linux"
-          DEST: "./bin/apex"
+          DEST: "./apex"
 
       - name: Build and push
         id: docker_build
