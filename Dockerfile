@@ -9,7 +9,7 @@ RUN wget ${TERRAFORM_URL} -O terraform.zip && \
 
 RUN apk update && apk add ca-certificates && rm -rf /var/cache/apk/*
 
-COPY /usr/local/bin/apex /usr/local/bin
+COPY ./bin/apex /usr/local/bin
 RUN chmod +x /usr/local/bin/apex
 
 WORKDIR /app
