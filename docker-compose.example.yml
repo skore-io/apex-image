@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  deploy:
+    image: 959372522499.dkr.ecr.us-east-1.amazonaws.com/node-apex:latest
+    volumes:
+      - $HOME/.aws:/root/.aws
+      - .:/app
