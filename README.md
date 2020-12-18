@@ -1,13 +1,6 @@
-# Authenticate Docker client on ECR
-Retrieve an authentication token and authenticate your Docker client to your registry.
-```sh
-make docker-login
-```
+Image based on `node:10.20.1-alpine3.11` with Terraform 0.11.14 and Apex 1.0.0-rc2 installed.
 
-# Build and deploy a new image version
-If you have uploaded a new version of apex to s3 and want to update the Docker image
-```sh
-make download-apex
-make build-image
-make push-image
-```
+If your project uses apex to manage lambdas, you can use this image instead of trying to install apex (as the project is dead an binaries are not available anymore). A docker-compose example can be found [here](https://github.com/skore-io/apex-image/blob/main/docker-compose.example.yml)
+
+# Building a new version of this image
+A new version of this image gets built and deployed whenever a new commit gets pushed to main
