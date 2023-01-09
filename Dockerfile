@@ -1,6 +1,6 @@
 FROM node:10.20.1-alpine3.11
 
-ARG TERRAFORM_VERSION="0.11.14"
+ARG TERRAFORM_VERSION="0.11.15"
 ARG TERRAFORM_URL="https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip"
 
 RUN wget ${TERRAFORM_URL} -O terraform.zip && \
